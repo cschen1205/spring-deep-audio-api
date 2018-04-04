@@ -24,7 +24,7 @@ import java.util.List;
 @Controller
 public class AudioSearchController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ImageClassifierController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AudioClassifierController.class);
 
     @Autowired
     private AudioSearchEngine audioSearchEngine;
