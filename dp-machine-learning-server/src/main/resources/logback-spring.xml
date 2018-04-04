@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <springProperty name="logfile" source="spring.application.name"/>
+
+
+    <!-- logging to rolling file (i.e. file that goes into next file when exceeding in date or size -->
+    <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>userid</key>
+            <defaultValue>unknown</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>/home/whizhome/logs/${logfile}.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>/home/whizhome/logs/${logfile}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+                    <timeBasedFileNamingAndTriggeringPolicy
+                            class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                        <maxFileSize>200MB</maxFileSize>
+                    </timeBasedFileNamingAndTriggeringPolicy>
+                    <!-- keep 3 days' worth of history -->
+                    <maxHistory>3</maxHistory>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>%date{yyyy-MM-dd} %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+
+    <!-- logging to console -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{yyyy-MM-dd} %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SYSLOG-UDP-DEV" class="com.papertrailapp.logback.Syslog4jAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%-5level %logger{35}: %m%n%xEx</pattern>
+        </layout>
+
+        <syslogConfig class="org.productivity.java.syslog4j.impl.net.udp.UDPNetSyslogConfig">
+            <!-- remote system to log to -->
+            <host>dev-server-syslog4j</host>
+            <!-- remote port to log to -->
+            <port>8089</port>
+            <!-- program name to log as -->
+            <ident>wh-eureka-app-vendor</ident>
+            <!-- max log message length in bytes -->
+            <maxMessageLength>128000</maxMessageLength>
+        </syslogConfig>
+    </appender>
+
+    <appender name="SYSLOG-UDP-PROD" class="com.papertrailapp.logback.Syslog4jAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%-5level %logger{35}: %m%n%xEx</pattern>
+        </layout>
+
+        <syslogConfig class="org.productivity.java.syslog4j.impl.net.udp.UDPNetSyslogConfig">
+            <!-- remote system to log to -->
+            <host>whd-web-01</host>
+            <!-- remote port to log to -->
+            <port>8089</port>
+            <!-- program name to log as -->
+            <ident>wh-eureka-app-vendor</ident>
+            <!-- max log message length in bytes -->
+            <maxMessageLength>128000</maxMessageLength>
+        </syslogConfig>
+    </appender>
+
+    <appender name="SYSLOG-UDP-DEFAULT" class="com.papertrailapp.logback.Syslog4jAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%-5level %logger{35}: %m%n%xEx</pattern>
+        </layout>
+
+        <syslogConfig class="org.productivity.java.syslog4j.impl.net.udp.UDPNetSyslogConfig">
+            <!-- remote system to log to -->
+            <host>localhost</host>
+            <!-- remote port to log to -->
+            <port>8089</port>
+            <!-- program name to log as -->
+            <ident>wh-eureka-app-vendor</ident>
+            <!-- max log message length in bytes -->
+            <maxMessageLength>128000</maxMessageLength>
+        </syslogConfig>
+    </appender>
+
+
+    <root level="INFO">
+        <appender-ref ref="SIFT"/>
+
+        <springProfile name="development">
+            <appender-ref ref="SYSLOG-UDP-DEV" />
+        </springProfile>
+
+        <springProfile name="production">
+            <appender-ref ref="SYSLOG-UDP-PROD" />
+        </springProfile>
+
+    </root>
+
+
+
+
+
+
+</configuration>
