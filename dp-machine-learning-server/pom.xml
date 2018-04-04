@@ -356,19 +356,7 @@
 
         <dependency>
             <groupId>com.github.cschen1205</groupId>
-            <artifactId>dp-image-classifier</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.cschen1205</groupId>
             <artifactId>dp-audio-classifier</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.cschen1205</groupId>
-            <artifactId>dp-sentiment-analysis</artifactId>
             <version>1.0.1</version>
         </dependency>
 
@@ -386,50 +374,7 @@
             <version>1.0.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.cschen1205</groupId>
-            <artifactId>dp-image-search-engine</artifactId>
-            <version>1.0.1</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.github.cschen1205</groupId>
-            <artifactId>dp-image-recommender</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.cschen1205</groupId>
-            <artifactId>dp-object-detection</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-
-
-
-        <!-- https://mvnrepository.com/artifact/io.searchbox/jest -->
-        <dependency>
-            <groupId>io.searchbox</groupId>
-            <artifactId>jest</artifactId>
-            <version>${elasticsearch.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
-            <version>${elasticsearch.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>pdfbox</artifactId>
-            <version>2.0.5</version>
-        </dependency>
 
     </dependencies>
 

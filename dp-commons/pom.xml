@@ -9,15 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dp-audio-recommender</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.github.cschen1205</groupId>
-            <artifactId>dp-audio-search-engine</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-    </dependencies>
+    <artifactId>dp-commons</artifactId>
 
 
 </project>

@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>dp-commons</module>
         <module>dp-audio-classifier</module>
         <module>dp-machine-learning-server</module>
         <module>dp-audio-search-engine</module>
