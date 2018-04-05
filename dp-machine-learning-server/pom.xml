@@ -259,20 +259,6 @@
         </dependency>
 
 
-        <!-- WebJars -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>sockjs-client</artifactId>
-            <version>0.3.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>stomp-js</artifactId>
-            <version>ca2e094679</version>
-        </dependency>
-
-
         <!-- Rest API Documentation -->
         <dependency>
             <groupId>io.springfox</groupId>
