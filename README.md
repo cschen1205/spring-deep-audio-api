@@ -43,6 +43,6 @@ npm install
 npm start
 ``` 
 
-This will start the Vue frontend running at http://localhost:8088
+This will start the Vue frontend running at http://localhost:8080
 
 
